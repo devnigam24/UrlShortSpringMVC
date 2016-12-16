@@ -4,55 +4,35 @@
 <html>
 <head>
 <%@include file="includes/assets.jsp"%>
-<%@ page import="com.fullerton.edu.cpsc.cpsc476.pojo.NewUserDetails"%>
-<%@ page import="com.fullerton.edu.cpsc.cpsc476.Util.ErrorAndMessages"%>
-<%@ page import="com.fullerton.edu.cpsc.cpsc476.Util.ShowErrorPageUtil"%>
-<%
-	NewUserDetails thisUser = (NewUserDetails) session.getAttribute("userInsession");
-	String userName = "";
-
-	if (thisUser == null || thisUser.getUsername().equals(null) || thisUser.getUsername().equals("")) {
-		session.invalidate();
-		ShowErrorPageUtil.redirectToErrorPage(request, response, "signUp.jsp",
-				ErrorAndMessages.PRIVATEPAGEACCESSERROR);
-		return;
-	} else {
-		userName = thisUser.getUsername();
-	}
-	ArrayList<URL> UrlMap = (ArrayList) request.getAttribute("URLlist");
-	Iterator<URL> url = UrlMap.iterator();
-%>
 </head>
 <body>
-	<h3>
-		Welcome ---->>>><%=userName%></h3>
-	<table>
-		<thead>
-			<tr>
-				<th data-field="longUrl">Long Url</th>
-				<th data-field="ShortUrl">Short Url</th>
-				<th data-field="urlCount">Hits</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<%
-				while (url.hasNext()) {
-					URL key = (URL)url.next();
-			%>
-			<tr>
-				<td><%=key.getLongName()%></td>
-				<td><%=key.getShortName()%></td>				
-				<td><%=key.getHits()%></td>				
-				<%
-					}
-				%>
-			
-		</tbody>
-	</table>
+	<h3>Welcome ---->>>>${userName}</h3>
+	
+	<div style="border:5px black solid;">
+			<div class="row">
+			<ul >
+				<li class="col s6" data-field="longUrl">Long Url</li>
+				<li class="col s5" data-field="ShortUrl">Short Url</li>
+				<li class="col s1" data-field="urlCount">Hits</li>
+				</ul>
+			</div>
+		
+			<c:forEach  var="i" items="${URLlist}">			
+				<div class="row">
+				<ul >
+					<li style="overflow:hidden;" class="col s5">${i.getLongUrl()}</li>
+					<li class="col s1"></td>
+					<li class="col s5">${i.getShortUrl()}</li>
+					<li class="col s1">${i.getHits()}</li>
+					</ul>
+				</div>
+							
+			</c:forEach>
+		
+	</div>
 
 	<div class="row col s4">
-		<form action="LogOut" method="post">
+		<form action="logOut" method="post">
 			<div class="input-field col s6 right">
 				<input type="submit" value="Logout">
 			</div>

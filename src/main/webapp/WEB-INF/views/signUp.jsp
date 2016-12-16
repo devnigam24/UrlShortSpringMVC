@@ -1,5 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <%@include file="includes/assets.jsp"%>
@@ -13,16 +14,14 @@
 				<form:form action="SignUpServlet" method="post">
 					<div class="row">
 						<div class="input-field col s6">
-							<form:input path="username" id="username"  
-								type="text" class="validate" value="${username}" /> 
-								<form:label path="username" for="username">Username</form:label>
+							<input name="username" type="text" class="validate" value="${username}" />
+							<label for="username">Username</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s6">
-							<form:input path="password" id="password"  
-								type="text" class="validate" value="" /> 
-								<form:label path="password" for="password">password</form:label>
+							<input name="password" type="password" class="validate" value="" />
+							<label for="password">password</label>
 						</div>
 						<div class="col s4">
 							<c:if test="${passwordDonotMatch == 'true'}">
@@ -32,9 +31,8 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s6">
-							<form:input path="cpassword" id="cpassword"  
-								type="text" class="validate" value="" /> 
-								<form:label path="cpassword" for="cpassword">Confirm password</form:label>
+							<input name="cpassword" type="password" class="validate" value="" /> 
+							<label path="cpassword" for="cpassword">Confirm password</label>
 						</div>
 					</div>
 					<div class="row">
@@ -49,14 +47,13 @@
 			<div class="row col s4">
 				<form:form action="LoginServlet" method="post">
 					<div class="input-field col s10">
-						<form:input path="username" id="username"  
-								type="text" class="validate" value="${username}" /> 
-								<form:label path="username" for="username">Username</form:label>
+						<input name="username" id="username" type="text" class="validate" value="${username}" /> 
+							<label for="username">Username</label>
 					</div>
 					<div class="input-field col s10">
-						<form:input path="password" id="password"  
+						<input name="password" id="password"  
 								type="text" class="validate" value="" /> 
-								<form:label path="password" for="password">password</form:label>
+								<label for="password">password</label>
 					</div>
 					<div class="row">
 						<div class="input-field col s6">
@@ -69,7 +66,7 @@
 				<div class="row">
 					<div class="input-field col s6">
 						<input type="button" value="Guest User"
-							onclick="window.location.href='publicUrlShortner.jsp'">
+							onclick="window.location.href='publicUrlShortner'">
 					</div>
 				</div>
 			</div>

@@ -6,44 +6,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Public page</title>
 <%@include file="includes/assets.jsp"%>
-<%@ page import="com.fullerton.edu.cpsc.cpsc476.pojo.NewUserDetails"%>
-<%@ page import="com.fullerton.edu.cpsc.cpsc476.Util.ErrorAndMessages"%>
-<%@ page import="com.fullerton.edu.cpsc.cpsc476.Util.ShowErrorPageUtil"%>
-<%! 
-	
-%>
-<%
-	String longUrl = (String)request.getAttribute("longUrl");
-	String shortUrl = (String)request.getAttribute("shortUrl");
-	String errorMessage = (String) request.getAttribute("errorMessage");
-%>
 </head>
 <body>
-	<%
-			if (errorMessage != null) {
-		%>
-	<h3 style="color: orangered; text-align: center;"><%=errorMessage%></h3>
-	<%
-			}
-		%>
+	<h3 style="color: orangered; text-align: center;">${errorMessage}</h3>
 	<h3>Welcome ---->>>>Guest User</h3>
 	<div class="row col s4">
-		<form action="UrlShortnerServlet" method="post">
-			<input type="hidden" name="pageName" value="publicUrlShortner.jsp">
+		<form:form action="UrlShortnerController" method="post">
 			<div class="input-field col s6">
-				<input id="longUrl" name="longUrl" type="text"
-					<%if (longUrl != null) %> value=<%=longUrl%>> <label
-					for="longUrl">longUrl</label>
+				<input name="longUrl" type="text" value="${longUrl}" /> 
+				<label for="longUrl">longUrl</label>
 			</div>
 			<div class="input-field col s4">
-				<a id="shortUrl" onclick="updateClickCount(this)" href="#"> <%if (shortUrl != null) %><%=shortUrl %></a>
+				<a id="shortUrl" target="_blank" href="${shortUrl}">${shortUrl}</a>
 			</div>
 			<div class="input-field col s4">
 				<div class="input-field col s6">
-					<input type="submit" value="Short It">
+					<input type="submit" value="Short It" />
 				</div>
 			</div>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

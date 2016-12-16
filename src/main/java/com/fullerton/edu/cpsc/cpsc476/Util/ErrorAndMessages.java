@@ -12,13 +12,15 @@ public class ErrorAndMessages {
 
 	public static String LOGINCREDENTIALMISMATCH = "User name and password does not match!!! Please try again...";
 
-	public static String LOGINSUCCESS = "Login Successful welcome to UrlShorner";
+	public static String LOGINSUCCESS = "Login Successful welcome to UrlShortner";
 
 	public static String USERNAMENULL = "Username cannot be null";
 
 	public static String PASSWORDNULL = "Password cannot be null";
 
 	public static String LOGOUTMESSAGE = "You have been Logged out successfully";
+	
+	public static String SIGNUPSUCCESSFULLMESSAAGE = "Sign Up Successfull";
 
 	public static String PRIVATEPAGEACCESSERROR = "You are trying to access a private page. You need to login to access it";
 

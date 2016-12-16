@@ -1,25 +1,36 @@
 package com.fullerton.edu.cpsc.cpsc476.pojo;
 
 public class URL {
-	String longName;
-	public String getLongName() {
-		return longName;
+	String longUrl;
+	String shortUrl;
+	int hits;
+	
+	
+	public String getLongUrl() {
+		return longUrl;
 	}
-	public void setLongName(String longName) {
-		this.longName = longName;
+
+	public void setLongUrl(String longUrl) {
+		this.longUrl = longUrl;
 	}
-	public String getShortName() {
-		return shortName;
+
+	public String getShortUrl() {
+		return shortUrl;
 	}
-	public void setShortName(String shortName) {
-		this.shortName = shortName;
+
+	public void setShortUrl(String shortUrl) {
+		this.shortUrl = shortUrl;
 	}
+
 	public int getHits() {
 		return hits;
 	}
+
 	public void setHits(int hits) {
 		this.hits = hits;
 	}
-	String shortName;
-	int hits;
+
+	
+	public URL(){}
+	
 }

@@ -6,12 +6,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.ui.ModelMap;
+
 import com.fullerton.edu.cpsc.cpsc476.pojo.NewUserDetails;
 import com.fullerton.edu.cpsc.cpsc476.pojo.URL;
 
 public interface NewUserInterface {
 	
-	Boolean inserNewUserInDB(NewUserDetails newUser,HttpServletRequest req,HttpServletResponse res);
+	Boolean inserNewUserInDB(NewUserDetails newUser, HttpServletRequest req, ModelMap model);
 	Boolean insertLongAndShortURL(String userName,String longURL, String shortURL,int hits);
 	Boolean updateUrlHits(String longURL);
 	Boolean authenticateThisUser(String userName,String password);

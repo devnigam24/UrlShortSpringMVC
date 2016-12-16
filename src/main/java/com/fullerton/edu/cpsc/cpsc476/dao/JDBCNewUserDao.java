@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.ui.ModelMap;
 
 import com.fullerton.edu.cpsc.cpsc476.Util.ErrorAndMessages;
 import com.fullerton.edu.cpsc.cpsc476.Util.ShowErrorPageUtil;
@@ -29,7 +30,7 @@ public class JDBCNewUserDao implements NewUserInterface {
 		this.jdbctemplate = new JdbcTemplate(this.dataSource);
 	}
 
-	public Boolean inserNewUserInDB(NewUserDetails newUser, HttpServletRequest req,HttpServletResponse res) {
+	public Boolean inserNewUserInDB(NewUserDetails newUser, HttpServletRequest req, ModelMap model) {
 		try {
 			String CRATENEWUSER = "INSERT INTO ALLUSERSTABLE (USERNAME,PASSWORD) VALUES " + "('"
 					+ newUser.getUsername() + "','" + newUser.getPassword() + "')";
@@ -39,7 +40,7 @@ public class JDBCNewUserDao implements NewUserInterface {
 				return false;				
 			}
 		} catch (DuplicateKeyException dke) {
-			ShowErrorPageUtil.redirectToErrorPage(req,res, "signUp.jsp", ErrorAndMessages.COLLECTIONEXISTS);
+			ShowErrorPageUtil.setErrorMessageInModel(model, ErrorAndMessages.COLLECTIONEXISTS);
 			return null;
 		} catch (Exception e) {
 			return false;
@@ -167,8 +168,8 @@ public class JDBCNewUserDao implements NewUserInterface {
 				List<Map<String, Object>> rows = jdbctemplate.queryForList(selectAll);				
 				for (Map row : rows) {
 					URL myUrl = new URL();
-					myUrl.setLongName((String)row.get("LONGURL"));
-					myUrl.setShortName((String)row.get("SHORTURL"));
+					myUrl.setLongUrl((String)row.get("LONGURL"));
+					myUrl.setShortUrl((String)row.get("SHORTURL"));
 					myUrl.setHits((Integer)row.get("HITS"));
 					thisList.add(myUrl);
 				}

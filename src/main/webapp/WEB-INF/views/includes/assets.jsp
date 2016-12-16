@@ -4,3 +4,6 @@
 <link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
 <link rel="stylesheet" type="text/css"	href="assets\css\form-register.css">
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
